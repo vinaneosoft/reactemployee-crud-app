@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export function Learning(){
     let [sum, setSum]=useState(0); 
     let [subtraction, setSub]=useState(0);
-    let test=()=>{
+    let test=function(){
         console.log("Function called");  
     }
     let test2=(event)=>{
@@ -28,9 +28,13 @@ export function Learning(){
      3. if dependancy array is empty then, useEffect will not be called after any state change in any property
     components gets rendered when 1. 1st loading, 2. state change in variable state */
     useEffect(()=>{
-        console.log("Component rendered......");
-        console.log(sum);
-    }, []);
+        console.log("setup activity, connected to external system.....");
+        console.log(sum); // new props and states
+        return ()=>{
+            console.log("cleanup activity, disconnected from external system.....");
+            console.log(sum);  // old props and states
+        }
+    }, [sum]);
     return (
         <>
             <button onClick={test}>CLICK</button>
@@ -40,10 +44,10 @@ export function Learning(){
             <button onClick={()=>add(45,789,3455,2444)}>ADD</button>
             <button onClick={()=>sub(6788,34, 56)}>SUBTRACT</button>
             <p>
-                <b>Addition is is {sum}</b>
+                <b>Addition is : {sum}</b>
             </p>
             <p>
-                <b>Subtraction is {subtraction}</b>
+                <b>Subtraction is : {subtraction}</b>
             </p>
         </>
     );
