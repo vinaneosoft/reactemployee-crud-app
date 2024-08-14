@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header } from '../header/Header';
+import { Footer } from '../footer/Footer';
 
 function App() { // capital case
 // java logic
@@ -11,17 +12,12 @@ function App() { // capital case
       <h1 className="mainHeading">EMPLOYEE MANAGEMENT</h1>
       <Header></Header>  
       <div>
-
+        Other components will get added later here
 
       </div>
-     {/*  footer component*/}
+      <Footer></Footer>
     </React.Fragment>
   );
 }
 
 export default App;
-
-
-function add(){ // camel case
-
-}
