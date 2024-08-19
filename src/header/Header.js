@@ -9,10 +9,14 @@ export function Header(){
     let applicationName="EMPLOYEE CRUD PROJECT";
     let styleClass="myHeader";
 
+    // JS in react way
+
+    /* extended javascript : JSX */
     return(
         <header className={styleClass}>
             <h2 className="text-danger">{applicationName}</h2>
-            <Navbar></Navbar>
+            <h3>CRUD</h3>
+            <Navbar></Navbar> 
         </header>
     );
 }

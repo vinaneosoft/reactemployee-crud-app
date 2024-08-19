@@ -5,7 +5,7 @@ export function Footer(){
 
     return(
         <footer className="myFooter">
-            <p>copyright by Vina Patil</p>
+            <p className="text-danger">copyright by Vina Patil</p>
            
         </footer>
     );
