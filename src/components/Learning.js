@@ -9,12 +9,6 @@ export function Learning(){
     let [age, setAge]=useState(0);
     let ageNode=useRef();
 
-    let getAge=()=>{
-        //console.log(ageNode);
-       // console.log(ageNode.current.value);
-        //setAge(ageNode.current.value);
-    }
-
     let template;
     if(age>=18)
      template= <p>
@@ -24,6 +18,7 @@ export function Learning(){
     template=<p>
         <b>Sorry!!!! you are not allowed for voting</b>
     </p>
+
     let prevStyle={
         backgroundColor : "yellow",
         padding : '10px'
@@ -64,7 +59,6 @@ export function Learning(){
 
     useEffect(()=>{
         console.log(`Set up..... ${sum}, ${subtraction}, ${age}`);
-        //showMessage();
         return () => {
             console.log(`Clean up.... ${sum}, ${subtraction}`);
           };
