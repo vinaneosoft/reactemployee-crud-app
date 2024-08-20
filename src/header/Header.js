@@ -9,13 +9,13 @@ export function Header(){
     let applicationName="EMPLOYEE CRUD PROJECT";
     let styleClass="myHeader";
 
+    let decorations=['text-danger', 'text-center']
     // JS in react way
 
     /* extended javascript : JSX */
     return(
         <header className={styleClass}>
-            <h2 className="text-danger">{applicationName}</h2>
-            <h3>CRUD</h3>
+            <h2 className={decorations.join(" ")}>{applicationName}</h2>
             <Navbar></Navbar> 
         </header>
     );
