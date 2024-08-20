@@ -12,7 +12,7 @@ export function Learning(){
     let getAge=()=>{
         //console.log(ageNode);
        // console.log(ageNode.current.value);
-        setAge(ageNode.current.value);
+        //setAge(ageNode.current.value);
     }
 
 
@@ -73,7 +73,8 @@ export function Learning(){
             </p>
             <div>
                 <h3>IF ELSE</h3>
-                <input type="number" defaultValue="0" ref={ageNode} onKeyUp={getAge}></input>
+                <input type="number" defaultValue="0" ref={ageNode}
+                 onKeyUp={()=> setAge(ageNode.current.value)}></input>
                 {age>=18 ?    <p>
                     <b>Welcome!!!! for voting</b>
                 </p> :  <p>
