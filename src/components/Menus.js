@@ -31,8 +31,9 @@ export function Menus(){
             <hr></hr>
             {/* logical && is used as if condition in template*/}
             {
-                foodtype=="veg" && <VegMenus></VegMenus>   
+                foodtype=="veg" &&  <VegMenus></VegMenus>   
             }
+               
         </>
     )
 }
