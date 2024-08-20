@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 // components get rerendered when state change happens
 // useState is hook function used to manage state of properties (variable, object, array)
 
-
-
-
 export function Learning(){
-    let [sum, setSum]=useState(0); 
+    let [sum, setSum]=useState(0); // returns array of length 2, current state of variable, function ref for state change
     let [subtraction, setSub]=useState(0);
-
+   
     let test=function(){
         console.log("Function called");  
     }
@@ -20,15 +17,15 @@ export function Learning(){
     let add=(...args)=>{
         let result=args.reduce((sum, ele)=>sum+ele) // internal looping
         console.log(result);
-        sum=result;
+       // sum=result; // wrong
         setSum(result);
-       // sum=result;
+ 
     }
     let sub=(...args)=>{
         let result=args.reduce((sum, ele)=>sum-ele)
         console.log(result);
-        setSub(result);
-       // sum=result;
+       // subtraction=result; // wrong
+       setSub(result);
     }
     /* 1. useEffect hook gets executed, when every time components gets rendered and no dependancy 
      2. useEffect hook gets executed when, component gets rendered due to state change in property which
@@ -38,7 +35,6 @@ export function Learning(){
 
     useEffect(()=>{
         console.log("useEffect called after component rendered.......");
-        
     });
 
     return (
