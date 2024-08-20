@@ -15,22 +15,15 @@ export function Learning(){
         //setAge(ageNode.current.value);
     }
 
-    let [template, setTemplate]=useState(<p>Enter age</p>);
-    function showMessage(){
-        console.log("in showMessage");
-        console.log(age);
-        
-        if(age>=18)
-            setTemplate( <p>
+    let template;
+    if(age>=18)
+     template= <p>
             <b>Welcome!!!! for voting</b>
-        </p>)
-        else
-        setTemplate(<p>
-            <b>Sorry!!!! you are not allowed for voting</b>
-        </p>)
-    }
-
-
+            </p>
+    else
+    template=<p>
+        <b>Sorry!!!! you are not allowed for voting</b>
+    </p>
     let prevStyle={
         backgroundColor : "yellow",
         padding : '10px'
@@ -71,11 +64,11 @@ export function Learning(){
 
     useEffect(()=>{
         console.log(`Set up..... ${sum}, ${subtraction}, ${age}`);
-        showMessage();
+        //showMessage();
         return () => {
             console.log(`Clean up.... ${sum}, ${subtraction}`);
           };
-    },[age]);
+    });
 
     return (
         <>
