@@ -15,6 +15,20 @@ export function Learning(){
         //setAge(ageNode.current.value);
     }
 
+    let [template, setTemplate]=useState(<p>Enter age</p>);
+    function showMessage(){
+        console.log("in showMessage");
+        console.log(age);
+        
+        if(age>=18)
+            setTemplate( <p>
+            <b>Welcome!!!! for voting</b>
+        </p>)
+        else
+        setTemplate(<p>
+            <b>Sorry!!!! you are not allowed for voting</b>
+        </p>)
+    }
 
     let prevStyle={
         backgroundColor : "yellow",
@@ -74,12 +88,18 @@ export function Learning(){
             <div>
                 <h3>IF ELSE</h3>
                 <input type="number" defaultValue="0" ref={ageNode}
-                 onKeyUp={()=> setAge(ageNode.current.value)}></input>
+                 onKeyUp={()=> 
+                 {  setAge(ageNode.current.value);
+                    showMessage();
+                 }}></input>
                 {age>=18 ?    <p>
                     <b>Welcome!!!! for voting</b>
                 </p> :  <p>
                     <b>Sorry!!!! you are not allowed for voting</b>
                 </p>}
+                <div>
+                    {template}
+                </div>
             </div>
         </>
     );
