@@ -26,8 +26,13 @@ export function Menus(){
                 <option value="nonveg">NON VEG</option>
                 <option value="both">BOTH</option>
             </select>
+           
             {template}
-            
+            <hr></hr>
+            {/* logical && is used as if condition in template*/}
+            {
+                foodtype=="veg" && <VegMenus></VegMenus>   
+            }
         </>
     )
 }
