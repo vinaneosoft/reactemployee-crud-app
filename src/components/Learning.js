@@ -30,6 +30,7 @@ export function Learning(){
         </p>)
     }
 
+
     let prevStyle={
         backgroundColor : "yellow",
         padding : '10px'
@@ -51,6 +52,8 @@ export function Learning(){
     let add=(...args)=>{
         let result=args.reduce((sum, ele)=>sum+ele) // internal looping
         setSum(result);
+       // console.log(sum);
+        
         //console.log(result);
        // sum=result; // wrong
     }
@@ -67,11 +70,12 @@ export function Learning(){
     components gets rendered when only on 1st loading */
 
     useEffect(()=>{
-        console.log(`Set up..... ${sum}, ${subtraction}`);
+        console.log(`Set up..... ${sum}, ${subtraction}, ${age}`);
+        showMessage();
         return () => {
             console.log(`Clean up.... ${sum}, ${subtraction}`);
           };
-    },[]);
+    },[age]);
 
     return (
         <>
@@ -88,10 +92,7 @@ export function Learning(){
             <div>
                 <h3>IF ELSE</h3>
                 <input type="number" defaultValue="0" ref={ageNode}
-                 onKeyUp={()=> 
-                 {  setAge(ageNode.current.value);
-                    showMessage();
-                 }}></input>
+                 onKeyUp={()=> setAge(ageNode.current.value)}></input>
                 {age>=18 ?    <p>
                     <b>Welcome!!!! for voting</b>
                 </p> :  <p>
