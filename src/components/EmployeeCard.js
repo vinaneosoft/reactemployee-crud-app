@@ -1,6 +1,5 @@
 import empImage from '../resources/sampleemployee.jpg';
 
-
 /*1.  in src directly add absolute path of image
  2. in src use jsx expression and call require function by passing relative path of image
  src={require("../resources/sampleemployee.jpg")}
@@ -9,7 +8,6 @@ import empImage from '../resources/sampleemployee.jpg';
  import empImage from '../resources/sampleemployee.jpg';
  */
 export function EmployeeCard({employee}){
-
     return(
         <div className="card" style={{width: '18rem'}}>
             <img height="150" src={empImage} className="card-img-top" alt="..." />

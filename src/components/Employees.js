@@ -1,27 +1,19 @@
 import { EmployeeCard } from "./EmployeeCard";
-
+import { Employee } from "../classes/Employee";
+import { useEffect } from "react";
 
 export function Employees(){
 
     let neoemployees=[
-        {
-            empId:123,
-            empName:"Hari Kumar",
-            deptCode:"LD",
-            basicSalary:90000,
-            experience : 20,
-            joiningDate : new Date("12 Dec 2000")
-        },
-        {
-            empId:121,
-            empName:"Pari Kumari",
-            deptCode:"JS",
-            basicSalary:95000,
-            experience : 25,
-            joiningDate : new Date("12 Jan 2002")
-        }
+        new Employee(123,"Hari Kumar", "LD", 90000, 20, new Date("12 Jan 2002")),
+        new Employee(121,"Pari Kumari", "JS", 95000, 25, new Date("12 Dec 2000"))
     ]
-    let cards=neoemployees.map(employee=><EmployeeCard employee={employee}></EmployeeCard>)
+
+    useEffect(()=>{
+        console.log("in useEffect");
+        
+    });
+    let cards=neoemployees.map(employee=><EmployeeCard key={employee.empId} employee={employee}></EmployeeCard>)
     return(
             <section className="d-flex flex-wrap">
                 {cards}
