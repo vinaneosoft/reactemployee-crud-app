@@ -5,18 +5,20 @@ import { VegMenus } from "./VegMenus";
 
 export function Menus(){
 
+        let [searchItem, setItem]=useState("");
+        let itemNode=useRef();
         let selectNode=useRef();
         let [foodtype, setType]=useState("both");
     let template;
 
     if(foodtype=="veg")
-        template=<VegMenus></VegMenus>
+        template=<VegMenus item={searchItem}></VegMenus>
     else if(foodtype=="nonveg")
-        template=<NonVegMenus></NonVegMenus>
+        template=<NonVegMenus item={searchItem}></NonVegMenus>
     else
         template=<>
-                    <VegMenus></VegMenus>
-                    <NonVegMenus></NonVegMenus>
+                    <VegMenus item={searchItem}></VegMenus>
+                    <NonVegMenus  item={searchItem}></NonVegMenus>
                 </>
     return(
         <>
@@ -26,12 +28,13 @@ export function Menus(){
                 <option value="nonveg">NON VEG</option>
                 <option value="both">BOTH</option>
             </select>
-           
+            <label>Enter food to search</label>
+            <input type="text" ref={itemNode} onKeyUp={()=>setItem(itemNode.current.value)}></input>
             {template}
             <hr></hr>
             {/* logical && is used as if condition in template*/}
             {
-                foodtype=="veg" &&  <VegMenus></VegMenus>   
+               /*  foodtype=="veg" &&  <VegMenus></VegMenus>    */
             }
                
         </>
