@@ -13,10 +13,9 @@ export function Header(){
     let decorations=['text-danger', 'text-center']
     // JS in react way
     /* extended javascript : JSX */
-        function getData(data){
-            console.log(data);
-            setCompany(data);
-        }
+    function getData(data){
+        setCompany(data);
+    }
     return(
         <header className={styleClass}>
             <h2 className={decorations.join(" ")}>{applicationName}<small> {companyName}</small></h2>
