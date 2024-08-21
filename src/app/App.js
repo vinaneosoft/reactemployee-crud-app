@@ -4,6 +4,7 @@ import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
 import { Learning } from '../components/Learning';
 import { Menus } from '../components/Menus';
+import { Employees } from '../components/Employees';
 
 function App() { // capital case
 // java logic
@@ -15,7 +16,7 @@ function App() { // capital case
       <Header></Header>  
       <div>
         Other components will get added later here
-       <Menus></Menus>
+      <Employees></Employees>
       </div>
       <Footer></Footer>
     </React.Fragment>
