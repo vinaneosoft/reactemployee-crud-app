@@ -5,7 +5,7 @@ export class Employee{
     constructor(
         empId=0, 
         empName="", 
-        deptCode="", 
+        deptCode="LD", 
         basicSalary=0, 
         experience=0, 
         emailId="",

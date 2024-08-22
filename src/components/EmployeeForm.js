@@ -1,6 +1,15 @@
+import { useEffect, useState } from "react";
+import { Employee } from "../classes/Employee";
 
 
 export function EmployeeForm(){
+
+    let [employee, setEmployee]=useState(new Employee())
+
+    function getData(ev){
+        console.log(ev.target.id);
+        setEmployee({...employee, [ev.target.id]:ev.target.value})
+    }
 /**  empId=0, 
         empName="", 
         deptCode="", 
@@ -8,7 +17,10 @@ export function EmployeeForm(){
         experience=0, 
         emailId="",
         joiningDate */
-
+useEffect(()=>{
+    console.log("in useEffect");
+    
+})
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)
 return(
@@ -18,31 +30,31 @@ return(
 <form>
     <div className="mb-3">
         <label htmlFor="empId" className="form-label">ID</label>
-        <input type="number" className="form-control" id="empId" />
+        <input type="number" className="form-control" id="empId" name="empId" value={employee.empId} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="empName" className="form-label">NAME</label>
-        <input type="text" className="form-control" id="empName" />
+        <input type="text" className="form-control" id="empName" value={employee.empName} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="emailId" className="form-label">EMAIL ID</label>
-        <input type="email" className="form-control" id="emailId" />
+        <input type="email" className="form-control" id="emailId"   value={employee.emailId} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="basicSalary" className="form-label">BASIC SALARY</label>
-        <input type="number" className="form-control" id="basicSalary" />
+        <input type="number" className="form-control" id="basicSalary"   value={employee.basicSalary} />
     </div>
     <div className="mb-3">
         <label htmlFor="experience" className="form-label">EXPERIENCE</label>
-        <input type="number" className="form-control" id="experience" />
+        <input type="number" className="form-control" id="experience"  value={employee.experience}  />
     </div>
     <div className="mb-3">
         <label htmlFor="joiningDate" className="form-label">JOINING DATE</label>
-        <input type="datetime-local" className="form-control" id="joiningDate" />
+        <input type="datetime-local" className="form-control" id="joiningDate"  value={employee.joiningDate}  />
     </div>
     <div className="mb-3">
         <label htmlFor="deptCode" className="form-label">SELECT DEPARTMENT</label>
-        <select id="deptCode">
+        <select id="deptCode"  value={employee.deptCode}>
             {options}
         </select>
     </div>
