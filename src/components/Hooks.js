@@ -1,25 +1,18 @@
 import { useEffect, useRef, useState } from "react"
 
-
-
 export function Hooks(){
-
     let counter=0;
-
     let [stateCounter, setStateCounter]=useState(0);
     let refCounter=useRef(0);
-
     useEffect(()=>{
         console.log("State:"+stateCounter);
         console.log("Ref:",refCounter);
         console.log("Normal:"+counter);
         
     }, [stateCounter, refCounter])
-
     function getCounter(){
         refCounter.current=refCounter.current+1
         console.log(refCounter.current);
-        
     }
     function normalCounter(){
         counter++;
@@ -37,7 +30,7 @@ export function Hooks(){
                 <button onClick={getCounter}> INCREMENT REF COUNTER</button>
             </div>
             <div>
-                <button onClick={normalCounter}>CLICK</button>
+                <button  onClick={normalCounter}>CLICK</button>
             </div>
         </>
     )

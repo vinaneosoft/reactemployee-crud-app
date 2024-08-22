@@ -2,6 +2,7 @@ import { Component } from "react";
 
 
 export class SearchBar extends Component{
+    
     render(){
         return(
             <form className="d-flex" role="search">

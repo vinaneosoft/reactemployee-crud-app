@@ -1,11 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { SearchBar } from "../components/SearchBar";
+import { MyContext } from "..";
 
 
 export function Navbar(props){
   let companyName="Neosoft";
+  let contextData=useContext(MyContext)
+
   useEffect(()=>{
     props.getData(companyName);
+    console.log(contextData);
+    
   }, [])
   return (
   <nav className="navbar navbar-expand-md bg-body-tertiary">
@@ -24,6 +29,9 @@ export function Navbar(props){
           </li>
         </ul>
         <SearchBar></SearchBar>
+        <div>
+            <small>{contextData}</small>
+        </div>
       </div>
     </div>
   </nav>
