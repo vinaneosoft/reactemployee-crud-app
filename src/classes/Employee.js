@@ -9,7 +9,7 @@ export class Employee{
         basicSalary=0, 
         experience=0, 
         emailId="",
-        joiningDate=new Date()
+        joiningDate=this.getDateTimeLocal()
     ){
         this.empId=empId;
         this.empName=empName;
@@ -19,5 +19,9 @@ export class Employee{
         this.emailId=emailId
         this.joiningDate=joiningDate;
 
+    }
+    getDateTimeLocal(){
+        const d=new Date();
+        return  (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
     }
 }

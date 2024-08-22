@@ -6,12 +6,22 @@ export function EmployeeForm(){
 
     let [employee, setEmployee]=useState(new Employee())
 
+    let [gender, setGender]=useState({
+        male:"male",
+        female:"female"
+    })
+
     function getData(ev){
         setEmployee({...employee, [ev.target.id]:ev.target.value})
     }
     function collectData(ev){
         ev.preventDefault();
         console.log(employee);
+        // react http : addEmployee(employee) / updateEmployee(employee)
+    }
+    function getGender(ev){
+        if(ev.target.checked)
+            console.log(ev.target.value)
     }
 useEffect(()=>{
    console.log("in useEffect");
@@ -52,6 +62,11 @@ return(
         <select id="deptCode"  value={employee.deptCode} onChange={getData}>
             {options}
         </select>
+    </div>
+    <div className="mb-3">
+        <label>SELECT GENDER</label>
+        <input  type="radio" id="male" name="gender" value={gender.male} onChange={getGender} /> <label htmlFor="male">:MALE</label>
+        <input  type="radio" id="female" name="gender" value={gender.female} onChange={getGender} />   <label htmlFor="female">:FEMALE</label>
     </div>
 <button type="submit" className="btn btn-primary">Submit</button>
 </form>
