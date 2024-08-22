@@ -7,19 +7,14 @@ export function EmployeeForm(){
     let [employee, setEmployee]=useState(new Employee())
 
     function getData(ev){
-        console.log(ev.target.id);
         setEmployee({...employee, [ev.target.id]:ev.target.value})
     }
-/**  empId=0, 
-        empName="", 
-        deptCode="", 
-        basicSalary=0, 
-        experience=0, 
-        emailId="",
-        joiningDate */
+    function collectData(ev){
+        ev.preventDefault();
+        console.log(employee);
+    }
 useEffect(()=>{
-    console.log("in useEffect");
-    
+   console.log("in useEffect");
 })
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)
@@ -27,7 +22,7 @@ return(
 <article className="d-flex justify-content-center">
 <div className="p-3 border border-3 w-50">
     <h3>EMPLOYEE INPUT FORM</h3>
-<form>
+<form onSubmit={collectData}>
     <div className="mb-3">
         <label htmlFor="empId" className="form-label">ID</label>
         <input type="number" className="form-control" id="empId" name="empId" value={employee.empId} onChange={getData} />
@@ -42,19 +37,19 @@ return(
     </div>
     <div className="mb-3">
         <label htmlFor="basicSalary" className="form-label">BASIC SALARY</label>
-        <input type="number" className="form-control" id="basicSalary"   value={employee.basicSalary} />
+        <input type="number" className="form-control" id="basicSalary"   value={employee.basicSalary} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="experience" className="form-label">EXPERIENCE</label>
-        <input type="number" className="form-control" id="experience"  value={employee.experience}  />
+        <input type="number" className="form-control" id="experience"  value={employee.experience} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="joiningDate" className="form-label">JOINING DATE</label>
-        <input type="datetime-local" className="form-control" id="joiningDate"  value={employee.joiningDate}  />
+        <input type="datetime-local" className="form-control" id="joiningDate"  value={employee.joiningDate} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="deptCode" className="form-label">SELECT DEPARTMENT</label>
-        <select id="deptCode"  value={employee.deptCode}>
+        <select id="deptCode"  value={employee.deptCode} onChange={getData}>
             {options}
         </select>
     </div>
