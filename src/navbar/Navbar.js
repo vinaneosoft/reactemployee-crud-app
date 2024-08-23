@@ -16,20 +16,28 @@ export function Navbar(props){
   return (
   <nav className="navbar navbar-expand-md bg-body-tertiary">
     <div className="container-fluid">
-      <Link className="navbar-brand" to="">{props.applicationName}</Link>
+      <Link className="navbar-brand" to="home">{props.applicationName}</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link"  href="#">Home</a>
+            <Link className="nav-link"  to="home">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <Link className="nav-link"  to="employees">Show Employees</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link"  to="employeeinput">Add Employee</Link>
           </li>
         </ul>
         <SearchBar></SearchBar>
+        <ul className="navbar-nav mb-2 mb-lg-0">
+          <li className="nav-item">
+            <Link className="nav-link text-info"  to="login">Admin Login</Link>
+          </li>
+        </ul>
         <div>
             <small>{contextData}</small>
         </div>

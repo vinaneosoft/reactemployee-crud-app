@@ -5,16 +5,21 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle"
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import { Employees } from './components/Employees';
 import { EmployeeForm } from './components/EmployeeForm';
 import { Home } from './components/Home';
+import { AdminLogin } from './components/AdminLogin';
 
 export let MyContext= React.createContext();
 
 let childRoutes=[
   {
     path:'/',
+    loader:()=>redirect('home')
+  },
+  {
+    path:'home',
     element:<Home />
   },
   {
@@ -24,7 +29,10 @@ let childRoutes=[
   {
     path:'employeeinput',
     element:<EmployeeForm></EmployeeForm>
-
+  },
+  {
+    path:'login',
+    element:<AdminLogin></AdminLogin>
   }
 ]
 
