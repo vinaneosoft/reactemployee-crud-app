@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import './App.css';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
-import { Learning } from '../components/Learning';
-import { Menus } from '../components/Menus';
-import { Employees } from '../components/Employees';
-import { EmployeeForm } from '../components/EmployeeForm';
-import { Hooks } from '../components/Hooks';
 import { MyContext } from '..';
+import { Outlet } from 'react-router-dom';
 function App() { // capital case
 // java logic
 
@@ -15,6 +11,7 @@ let [baseLocAddress, setAddress] =useState("Ruby Tower, Dadar");
   setTimeout(()=>{
     setAddress("Sigma IT Park, Rabale")
   }, 5000)
+  
   return (
     <MyContext.Provider value={baseLocAddress}>
     <React.Fragment> 
@@ -22,11 +19,7 @@ let [baseLocAddress, setAddress] =useState("Ruby Tower, Dadar");
       <p>{baseLocAddress}</p>
       <Header></Header>  
       <div>
-        Other components will get added later here
-        <Hooks></Hooks>
-        <hr></hr>
-        <hr></hr>
-        <Hooks></Hooks>
+        <Outlet></Outlet> {/* Outlet of Router, which route gets matched, that child will be out */}
       </div>
       <Footer></Footer>
     </React.Fragment>
