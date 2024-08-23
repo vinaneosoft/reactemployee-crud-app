@@ -29,7 +29,7 @@ export function Navbar(props){
             <Link className="nav-link"  to="employees">Show Employees</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"  to="employeeinput">Add Employee</Link>
+            <Link className="nav-link"  to="addemployee">Add Employee</Link>
           </li>
         </ul>
         <SearchBar></SearchBar>

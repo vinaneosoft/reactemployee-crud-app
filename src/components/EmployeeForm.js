@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
+import { useParams } from "react-router-dom";
 
 
 export function EmployeeForm(){
+
+    let {empId}=useParams(); // object destructuring
+ 
+
 
     let [employee, setEmployee]=useState(new Employee())
 
@@ -25,6 +30,8 @@ export function EmployeeForm(){
     }
 useEffect(()=>{
    console.log("in useEffect");
+   console.log(empId);
+   // find employee to display in update form
 })
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import empImage from '../resources/sampleemployee.jpg';
 
 /*1.  in src directly add absolute path of image
@@ -22,7 +23,7 @@ export function EmployeeCard({employee}){
                 <li className="list-group-item">Experience : {employee.experience} years</li>
                 </ul>
                 <div className="card-body">
-                <a href="#" className="card-link">EDIT</a>
+                <Link to={`/editemployee/${employee.empId}`} className="card-link">EDIT</Link>
                 <a href="#" className="card-link">DELETE</a>
             </div>
         </div>

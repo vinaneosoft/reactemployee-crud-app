@@ -27,7 +27,11 @@ let childRoutes=[
     element:<Employees />
   },
   {
-    path:'employeeinput',
+    path:'addemployee',
+    element:<EmployeeForm></EmployeeForm>
+  },
+  {
+    path:'editemployee/:empId',   // custom variable name
     element:<EmployeeForm></EmployeeForm>
   },
   {
