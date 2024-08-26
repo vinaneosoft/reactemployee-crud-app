@@ -4,6 +4,7 @@ import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
 import { MyContext } from '..';
 import { Outlet } from 'react-router-dom';
+
 function App() { // capital case
 // java logic
 
@@ -11,7 +12,7 @@ let [baseLocAddress, setAddress] =useState("Ruby Tower, Dadar");
   setTimeout(()=>{
     setAddress("Sigma IT Park, Rabale")
   }, 5000)
-  
+
   return (
     <MyContext.Provider value={baseLocAddress}>
     <React.Fragment> 

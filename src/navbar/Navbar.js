@@ -1,18 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import { MyContext } from "..";
 import { Link } from "react-router-dom";
-
+import Cookies from 'universal-cookie';
 
 export function Navbar(props){
+
   let companyName="Neosoft";
   let contextData=useContext(MyContext)
-
+  const cookies = new Cookies();
+  let [admin, setAdmin]=useState(cookies.get('neoadmin')); // react store useSelector
+  function logOut(){
+    cookies.remove("neoadmin");
+  }
   useEffect(()=>{
     props.getData(companyName);
-    console.log(contextData);
-    
-  }, [])
+  },[admin])
   return (
   <nav className="navbar navbar-expand-md bg-body-tertiary">
     <div className="container-fluid">
@@ -34,9 +37,12 @@ export function Navbar(props){
         </ul>
         <SearchBar></SearchBar>
         <ul className="navbar-nav mb-2 mb-lg-0">
-          <li className="nav-item">
-            <Link className="nav-link text-info"  to="login">Admin Login</Link>
-          </li>
+          {admin==="" || admin===undefined ? <li className="nav-item">
+            <Link className="nav-link text-info" to="login" >Admin Login</Link>
+          </li> :  <li className="nav-item">
+            <button className="nav-link text-info btn btn-link" onClick={logOut}>Logout</button>
+          </li> }
+         
         </ul>
         <div>
             <small>{contextData}</small>

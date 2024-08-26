@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Cookies from 'universal-cookie';
 export function AdminLogin(){
     let [message, setMessage]=useState("");
     const unameNode=useRef();
@@ -14,14 +14,19 @@ export function AdminLogin(){
     }
     function login(username, password){
         setMessage("");
-        if(username=="admin" && password == 'neo123')
+        if(username=="admin" && password == 'neo123'){
+            const cookies = new Cookies();
+            cookies.set('neoadmin', username);
             navigate('/home')
+        }
         else
             setMessage("Incorrect Username or Password")
 
     }
     return (
         <>  
+        <article className="d-flex justify-content-center">
+        <div className="p-3 border border-3 w-50">
             <h3>LOGIN FORM</h3>
             <p className="text-danger">{message}</p>
             <form onSubmit={collectData}>
@@ -38,6 +43,7 @@ export function AdminLogin(){
                 <button type="reset" className="btn btn-primary">RESET</button>
                 </div>
             </form>
+            </div></article>
         </>
     );
 }
