@@ -4,10 +4,7 @@ import { useParams } from "react-router-dom";
 
 
 export function EmployeeForm(){
-
     let {empId}=useParams(); // object destructuring
- 
-
 
     let [employee, setEmployee]=useState(new Employee())
 
@@ -75,7 +72,8 @@ return(
         <input  type="radio" id="male" name="gender" value={gender.male} onChange={getGender} /> <label htmlFor="male">:MALE</label>
         <input  type="radio" id="female" name="gender" value={gender.female} onChange={getGender} />   <label htmlFor="female">:FEMALE</label>
     </div>
-<button type="submit" className="btn btn-primary">Submit</button>
+<button type="submit" className="btn btn-primary m-2">SUBMIT</button>
+<button type="submit" className="btn btn-primary">RESET</button>
 </form>
 </div>
 </article>
