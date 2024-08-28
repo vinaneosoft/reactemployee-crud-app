@@ -1,14 +1,14 @@
 
-
 export class Employee{
     constructor(
-        empId=0, 
-        empName="", 
-        deptCode="LD", 
-        basicSalary=0, 
+        _id=0, 
+        emp_name="", 
+        dept_code="LD", 
+        emp_salary=0, 
         experience=0, 
-        emailId="",
-        joiningDate=this.getDateTimeLocal()
+        emp_email="",
+        joining_date=this.getDateTimeLocal(),
+        secrete_code="123"
     ){
         this.empId=empId;
         this.empName=empName;
@@ -17,7 +17,7 @@ export class Employee{
         this.experience=experience;
         this.emailId=emailId
         this.joiningDate=joiningDate;
-
+        this.secrete_code=secrete_code;
     }
     getDateTimeLocal(){
         const d=new Date();

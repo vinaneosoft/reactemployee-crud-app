@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useParams } from "react-router-dom";
+import { addEmployee } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
@@ -18,8 +19,20 @@ export function EmployeeForm(){
     }
     function collectData(ev){
         ev.preventDefault();
+       // console.log(employee);
+        if(empId!=undefined)
+            updateEmp();
+        else 
+            addEmp();
+    }
+    function updateEmp(){
+
+    }
+    async function addEmp(){
         console.log(employee);
-        // react http : addEmployee(employee) / updateEmployee(employee)
+        
+        const res=await addEmployee(employee);
+        console.log(res);
     }
     function getGender(ev){
         if(ev.target.checked)
