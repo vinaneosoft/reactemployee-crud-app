@@ -10,10 +10,12 @@ export function Navbar(props){
   let contextData=useContext(MyContext)
   const cookies = new Cookies();
   let [admin, setAdmin]=useState(cookies.get('neoadmin')); // react store useSelector
+ 
   function logOut(){
     cookies.remove("neoadmin");
   }
   useEffect(()=>{
+    console.log(admin); 
     props.getData(companyName);
   },[admin])
   return (
