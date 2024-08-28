@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addEmployee } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
     let {empId}=useParams(); // object destructuring
-
+    const navigate =useNavigate();
     let [employee, setEmployee]=useState(new Employee())
 
     let [gender, setGender]=useState({
@@ -29,10 +29,17 @@ export function EmployeeForm(){
 
     }
     async function addEmp(){
-        console.log(employee);
-        
-        const res=await addEmployee(employee);
-        console.log(res);
+       // console.log(employee);
+        const data=await addEmployee(employee);
+        console.log(data);
+        if(data!=null){
+                window.alert(`Employee with id ${data._id} added successfully.....`);
+                navigate("/employees")
+        }
+
+        else
+                window.alert("something went wrong");
+        //console.log(res);
     }
     function getGender(ev){
         if(ev.target.checked)

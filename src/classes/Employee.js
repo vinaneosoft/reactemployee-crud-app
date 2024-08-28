@@ -1,7 +1,7 @@
 
 export class Employee{
     constructor(
-        _id=0,  
+        _id=0, // json id=""  
         emp_name="", 
         dept_code="LD", 
         emp_salary=0, 
