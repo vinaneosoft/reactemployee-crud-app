@@ -1,7 +1,7 @@
 
 export class Employee{
     constructor(
-        _id=0, 
+        _id=0,  
         emp_name="", 
         dept_code="LD", 
         emp_salary=0, 
@@ -10,13 +10,13 @@ export class Employee{
         joining_date=this.getDateTimeLocal(),
         secrete_code="123"
     ){
-        this.empId=empId;
-        this.empName=empName;
-        this.deptCode=deptCode;
-        this.basicSalary=basicSalary;
+        this._id=_id;
+        this.emp_name=emp_name;
+        this.dept_code=dept_code;
+        this.emp_salary=emp_salary;
         this.experience=experience;
-        this.emailId=emailId
-        this.joiningDate=joiningDate;
+        this.emp_email=emp_email
+        this.joining_date=joining_date;
         this.secrete_code=secrete_code;
     }
     getDateTimeLocal(){

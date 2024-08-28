@@ -52,19 +52,19 @@ return(
 <form onSubmit={collectData}>
     <div className="mb-3">
         <label htmlFor="empId" className="form-label">ID</label>
-        <input type="number" className="form-control" id="empId" name="empId" value={employee.empId} onChange={getData} />
+        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="empName" className="form-label">NAME</label>
-        <input type="text" className="form-control" id="empName" value={employee.empName} onChange={getData} />
+        <input type="text" className="form-control" id="emp_name" value={employee.emp_name} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="emailId" className="form-label">EMAIL ID</label>
-        <input type="email" className="form-control" id="emailId"   value={employee.emailId} onChange={getData} />
+        <input type="email" className="form-control" id="emp_email"   value={employee.emp_email} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="basicSalary" className="form-label">BASIC SALARY</label>
-        <input type="number" className="form-control" id="basicSalary"   value={employee.basicSalary} onChange={getData} />
+        <input type="number" className="form-control" id="emp_salary"   value={employee.emp_salary} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="experience" className="form-label">EXPERIENCE</label>
@@ -72,13 +72,17 @@ return(
     </div>
     <div className="mb-3">
         <label htmlFor="joiningDate" className="form-label">JOINING DATE</label>
-        <input type="datetime-local" className="form-control" id="joiningDate"  value={employee.joiningDate} onChange={getData} />
+        <input type="datetime-local" className="form-control" id="joining_date"  value={employee.joining_date} onChange={getData} />
     </div>
     <div className="mb-3">
         <label htmlFor="deptCode" className="form-label">SELECT DEPARTMENT</label>
-        <select id="deptCode"  value={employee.deptCode} onChange={getData}>
+        <select id="dept_code"  value={employee.dept_code} onChange={getData}>
             {options}
         </select>
+    </div>
+    <div className="mb-3">
+        <label htmlFor="secrete_code" className="form-label">SECRETE CODE</label>
+        <input type="password" className="form-control" id="secrete_code"  value={employee.secrete_code} onChange={getData} />
     </div>
     <div className="mb-3">
         <label>SELECT GENDER</label>
@@ -93,3 +97,12 @@ return(
 );
 
 }
+
+/** _id=0, 
+        emp_name="", 
+        dept_code="LD", 
+        emp_salary=0, 
+        experience=0, 
+        emp_email="",
+        joining_date=this.getDateTimeLocal(),
+        secrete_code="123" */
