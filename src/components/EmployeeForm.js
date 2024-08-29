@@ -61,11 +61,11 @@ let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</optio
 return(
 <article className="d-flex justify-content-center">
 <div className="p-3 border border-3 w-50">
-    <h3>EMPLOYEE INPUT FORM</h3>
+    <h3>EMPLOYEE FORM</h3>
 <form onSubmit={collectData}>
     <div className="mb-3">
         <label htmlFor="empId" className="form-label">ID</label>
-        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} />
+        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} readOnly={empId!=undefined} />
     </div>
     <div className="mb-3">
         <label htmlFor="empName" className="form-label">NAME</label>
@@ -103,7 +103,7 @@ return(
         <input  type="radio" id="female" name="gender" value={gender.female} onChange={getGender} />   <label htmlFor="female">:FEMALE</label>
     </div>
 <button type="submit" className="btn btn-primary m-2">SUBMIT</button>
-<button type="submit" className="btn btn-primary">RESET</button>
+<button type="reset" onClick={()=>setEmployee(new Employee())} className="btn btn-primary">RESET</button>
 </form>
 </div>
 </article>
