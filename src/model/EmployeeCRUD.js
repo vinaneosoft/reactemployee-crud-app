@@ -27,3 +27,10 @@ export async function getAllEmployees(){
      const res=await axios.get(`${url2}/get/${_id}`) // link
      return res.data;
  }
+
+ 
+export async function updateEmployee(employee){
+    // axios.post(url1,employee);
+     const res=await axios.put(`${url2}/update`,employee) // back end req
+     return res.data;
+ }

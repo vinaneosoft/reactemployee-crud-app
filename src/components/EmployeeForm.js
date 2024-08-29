@@ -25,7 +25,7 @@ export function EmployeeForm(){
         else 
             addEmp();
     }
-    function updateEmp(){
+    async function updateEmp(){
 
     }
     async function addEmp(){
