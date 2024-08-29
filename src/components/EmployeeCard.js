@@ -9,23 +9,7 @@ import { deleteEmployeeId } from '../model/EmployeeCRUD';
  3. import image and use image variable in src
  import empImage from '../resources/sampleemployee.jpg';
  */
-export function EmployeeCard({employee, getEmps}){
-    async function deleteEmployee(_id){
-        const ans=window.confirm("Do you really want to delete??")
-        if(ans) {
-            const data=await deleteEmployeeId(_id);
-            if(data.deletedCount>0){
-                window.alert("Employee deleted Successfully")
-                getEmps();
-            }
-            else
-                window.alert("Something went wrong....")
-        }
-       // console.log(data);
-      
-    }
-
-
+export function EmployeeCard({employee, deleteEmployee}){
     return(
         <div className="card" style={{width: '18rem'}}>
             <img height="150" src={empImage} className="card-img-top" alt="..." />
