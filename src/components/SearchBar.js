@@ -4,8 +4,8 @@ export function SearchBar({getEmp}){
         const searchNode=useRef();
         return(
             <>
-                <input ref={searchNode} type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success" type="submit" onClick={()=>getEmp(searchNode.current.value)}>Search</button>
+                <label htmlFor="_id">Enter Id to Search Employee : </label>
+                <input ref={searchNode} id="_id" type="search" onKeyUp={()=>getEmp(searchNode.current.value)} placeholder="Search" aria-label="Search" />
             </>
         );
     

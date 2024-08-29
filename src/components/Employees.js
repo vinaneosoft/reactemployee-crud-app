@@ -3,11 +3,11 @@ import { Employee } from "../classes/Employee";
 import { useEffect, useState } from "react";
 import { getAllEmployees, deleteEmployeeById, getEmployeeById } from "../model/EmployeeCRUD";
 import { SearchBar } from "./SearchBar";
+import { type } from "@testing-library/user-event/dist/type";
 
 export function Employees(){
-
     let [neoemployees, setarray]=useState([])
-
+    let [notFoundError, setError]=useState("");
     async function getEmps(){
            const data=await getAllEmployees(); 
            console.log(data);
@@ -26,9 +26,20 @@ export function Employees(){
         }
     }
     async function getEmp(_id){
-       const employee= neoemployees.find(emp=>emp._id=_id)
-      // console.log(employee);
-       setarray([employee])
+        if(_id!=""){
+            const employee=await getEmployeeById(_id) 
+            if(employee!="")
+            {
+                setError("");
+                setarray([employee]);
+            }
+            else 
+                setError("Not Found....")
+                
+                  
+        }
+        else
+            getEmps()
     }
     useEffect(()=>{
        // after rending if u want to connect to external system
@@ -38,6 +49,7 @@ export function Employees(){
     return(
             <>
             <SearchBar getEmp={getEmp}></SearchBar>
+            <small className="text-danger">{notFoundError}</small>
             <section className="d-flex flex-wrap">
                 {cards}
             </section>
