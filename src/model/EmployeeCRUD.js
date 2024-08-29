@@ -15,3 +15,9 @@ export async function getAllEmployees(){
     // console.log(res);
      return res.data;
  }
+
+ export async function deleteEmployeeId(_id){
+    // axios.post(url1,employee);
+     const res=await axios.delete(`${url2}/delete/${_id}`) // back end req
+     return res.data;
+ }
