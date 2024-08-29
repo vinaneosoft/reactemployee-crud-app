@@ -1,14 +1,12 @@
-import { Component } from "react";
+import { useRef } from "react";
 
-
-export class SearchBar extends Component{
-    
-    render(){
+export function SearchBar({getEmp}){
+        const searchNode=useRef();
         return(
-            <form className="d-flex" role="search">
-                <input  className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <>
+                <input ref={searchNode} type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-success" type="submit" onClick={()=>getEmp(searchNode.current.value)}>Search</button>
+            </>
         );
-    }
+    
 }

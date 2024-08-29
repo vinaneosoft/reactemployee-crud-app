@@ -5,32 +5,35 @@ const url1="http://localhost:3000/employees";
 const url2="http://localhost:5000/employees"
 
 export async function addEmployee(employee){
-   // axios.post(url1,employee);
-    const res=await axios.post(`${url2}/add`,employee) // back end req
+  // const res=await axios.post(url1,employee)
+    const res=await axios.post(`${url2}/add`,employee) // employee : new records
     return res.data;
 }
+ 
+export async function updateEmployee(employee){
+    //  const res=await axios.put(`${url1}/${employee._id}`,employee) // for json server
+    const res=await axios.put(`${url2}/update/${employee._id}`,employee) // new records, id existing
+   // console.log(res);
+      return res.data;
+  }
+
 export async function getAllEmployees(){
-    // axios.post(url1,employee);
+    // axios.get(url1);
      const res=await axios.get(`${url2}/getall`) // back end req
     // console.log(res);
      return res.data;
  }
 
- export async function deleteEmployeeById(_id){
-    // axios.post(url1,employee);
-     const res=await axios.delete(`${url2}/delete/${_id}`) // link
-     return res.data;
- }
-
  export async function getEmployeeById(_id){
-    // axios.post(url1,employee);
-     const res=await axios.get(`${url2}/get/${_id}`) // link
+    //const res=await axios.get(`${url1}/${_id}`)
+     const res=await axios.get(`${url2}/get/${_id}`) 
      return res.data;
  }
 
- 
-export async function updateEmployee(employee){
-    // axios.post(url1,employee);
-     const res=await axios.put(`${url2}/update`,employee) // back end req
+ export async function deleteEmployeeById(_id){
+     //const res=await axios.delete(`${url1}/${_id}`)
+     const res=await axios.delete(`${url2}/delete/${_id}`)
      return res.data;
  }
+
+

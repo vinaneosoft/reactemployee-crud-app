@@ -1,7 +1,8 @@
 import { EmployeeCard } from "./EmployeeCard";
 import { Employee } from "../classes/Employee";
 import { useEffect, useState } from "react";
-import { getAllEmployees, deleteEmployeeById } from "../model/EmployeeCRUD";
+import { getAllEmployees, deleteEmployeeById, getEmployeeById } from "../model/EmployeeCRUD";
+import { SearchBar } from "./SearchBar";
 
 export function Employees(){
 
@@ -24,15 +25,22 @@ export function Employees(){
                 window.alert("Something went wrong....")
         }
     }
-
+    async function getEmp(_id){
+       const employee= neoemployees.find(emp=>emp._id=_id)
+      // console.log(employee);
+       setarray([employee])
+    }
     useEffect(()=>{
        // after rending if u want to connect to external system
        getEmps();
     }, []);
     let cards=neoemployees.map(employee=><EmployeeCard key={employee._id} employee={employee} deleteEmployee={deleteEmployee}></EmployeeCard>)
     return(
+            <>
+            <SearchBar getEmp={getEmp}></SearchBar>
             <section className="d-flex flex-wrap">
                 {cards}
             </section>
+            </>
     );
 }

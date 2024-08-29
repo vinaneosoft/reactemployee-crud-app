@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useNavigate, useParams } from "react-router-dom";
-import { addEmployee, getEmployeeById } from "../model/EmployeeCRUD";
+import { addEmployee, getEmployeeById, updateEmployee } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
@@ -26,12 +26,19 @@ export function EmployeeForm(){
             addEmp();
     }
     async function updateEmp(){
-
+        const data=await updateEmployee(employee);
+        console.log(data);    
+        if(data.modifiedCount>0){
+            window.alert(`Employee with id ${employee._id} updated successfully.....`);
+            navigate("/employees")
+        }
+        else
+            window.alert("something went wrong");
     }
     async function addEmp(){
        // console.log(employee);
         const data=await addEmployee(employee);
-        console.log(data);
+       // console.log(data);
         if(data!=null){
             window.alert(`Employee with id ${data._id} added successfully.....`);
             navigate("/employees")
