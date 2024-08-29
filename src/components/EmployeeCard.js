@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import empImage from '../resources/sampleemployee.jpg';
-import { deleteEmployeeId } from '../model/EmployeeCRUD';
+
 
 /*1.  in src directly add absolute path of image
  2. in src use jsx expression and call require function by passing relative path of image

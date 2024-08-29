@@ -16,8 +16,14 @@ export async function getAllEmployees(){
      return res.data;
  }
 
- export async function deleteEmployeeId(_id){
+ export async function deleteEmployeeById(_id){
     // axios.post(url1,employee);
-     const res=await axios.delete(`${url2}/delete/${_id}`) // back end req
+     const res=await axios.delete(`${url2}/delete/${_id}`) // link
+     return res.data;
+ }
+
+ export async function getEmployeeById(_id){
+    // axios.post(url1,employee);
+     const res=await axios.get(`${url2}/get/${_id}`) // link
      return res.data;
  }

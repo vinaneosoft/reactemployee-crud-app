@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useNavigate, useParams } from "react-router-dom";
-import { addEmployee } from "../model/EmployeeCRUD";
+import { addEmployee, getEmployeeById } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
@@ -33,23 +33,29 @@ export function EmployeeForm(){
         const data=await addEmployee(employee);
         console.log(data);
         if(data!=null){
-                window.alert(`Employee with id ${data._id} added successfully.....`);
-                navigate("/employees")
+            window.alert(`Employee with id ${data._id} added successfully.....`);
+            navigate("/employees")
         }
 
         else
-                window.alert("something went wrong");
+            window.alert("something went wrong");
         //console.log(res);
     }
+    async function getEmp(){
+        if(empId!=undefined){
+            let emp=await getEmployeeById(empId);
+            emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)  ;
+            setEmployee(emp);
+        }
+    }
+
     function getGender(ev){
         if(ev.target.checked)
             console.log(ev.target.value)
     }
 useEffect(()=>{
-   console.log("in useEffect");
-   console.log(empId);
-   // find employee to display in update form
-})
+    getEmp();
+}, [])
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)
 return(

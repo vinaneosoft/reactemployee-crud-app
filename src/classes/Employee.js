@@ -20,7 +20,7 @@ export class Employee{
         this.secrete_code=secrete_code;
     }
     getDateTimeLocal(){
-        const d=new Date();
+        let d=new Date();
         return  (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
     }
 }
