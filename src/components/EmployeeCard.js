@@ -9,10 +9,11 @@ import empImage from '../resources/sampleemployee.jpg';
  3. import image and use image variable in src
  import empImage from '../resources/sampleemployee.jpg';
  */
-export function EmployeeCard({employee, deleteEmployee}){
+export function EmployeeCard({employee, deleteEmployee, editProfilePic}){
     return(
         <div className="card" style={{width: '18rem'}}>
             <img height="150" src={empImage} className="card-img-top" alt="..." />
+            <Link to={`/fileupload/${employee._id}`}>edit picture</Link>
             <div className="card-body">
                 <h6>#{employee._id}</h6>
                 <h5 className="card-title">{employee.emp_name}</h5>

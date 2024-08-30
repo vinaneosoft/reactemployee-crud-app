@@ -2,10 +2,9 @@ import { EmployeeCard } from "./EmployeeCard";
 import { Employee } from "../classes/Employee";
 import { useEffect, useState } from "react";
 import { getAllEmployees, deleteEmployeeById, getEmployeeById } from "../model/EmployeeCRUD";
-import { SearchBar } from "./SearchBar";
-import { type } from "@testing-library/user-event/dist/type";
-
+import { useRef } from "react";
 export function Employees(){
+    const searchNode=useRef();
     let [neoemployees, setarray]=useState([])
     let [notFoundError, setError]=useState("");
     async function getEmps(){
@@ -28,18 +27,17 @@ export function Employees(){
     async function getEmp(_id){
         if(_id!=""){
             const employee=await getEmployeeById(_id) 
-            if(employee!="")
-            {
+            if(employee!=""){
                 setError("");
                 setarray([employee]);
             }
             else 
                 setError("Not Found....")
-                
-                  
         }
-        else
+        else{
+            setError("");
             getEmps()
+        }
     }
     useEffect(()=>{
        // after rending if u want to connect to external system
@@ -48,8 +46,11 @@ export function Employees(){
     let cards=neoemployees.map(employee=><EmployeeCard key={employee._id} employee={employee} deleteEmployee={deleteEmployee}></EmployeeCard>)
     return(
             <>
-            <SearchBar getEmp={getEmp}></SearchBar>
-            <small className="text-danger">{notFoundError}</small>
+            <div>
+                <label htmlFor="_id">Enter Id to Search Employee : </label>
+                <input ref={searchNode} id="_id" type="search" onKeyUp={()=>getEmp(searchNode.current.value)} placeholder="Search" aria-label="Search" />
+                <small className="text-danger">{notFoundError}</small>
+            </div>
             <section className="d-flex flex-wrap">
                 {cards}
             </section>

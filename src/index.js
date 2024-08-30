@@ -10,6 +10,7 @@ import { Employees } from './components/Employees';
 import { EmployeeForm } from './components/EmployeeForm';
 import { Home } from './components/Home';
 import { AdminLogin } from './components/AdminLogin';
+import { FileUpload } from './components/FileUpload';
 
 export let MyContext= React.createContext();
 
@@ -21,6 +22,10 @@ let childRoutes=[
   {
     path:'home',
     element:<Home />
+  },
+  {
+    path:'fileupload/:_id',
+    element:<FileUpload />
   },
   {
      path:'employees',

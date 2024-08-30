@@ -8,7 +8,8 @@ export class Employee{
         experience=0, 
         emp_email="",
         joining_date=this.getDateTimeLocal(),
-        secrete_code="123"
+        secrete_code="123",
+        employee_pic=""
     ){
         this._id=_id;
         this.emp_name=emp_name;
@@ -18,6 +19,7 @@ export class Employee{
         this.emp_email=emp_email
         this.joining_date=joining_date;
         this.secrete_code=secrete_code;
+        this.employee_pic=employee_pic;
     }
     getDateTimeLocal(){
         let d=new Date();
