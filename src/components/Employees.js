@@ -3,13 +3,18 @@ import { Employee } from "../classes/Employee";
 import { useEffect, useState } from "react";
 import { getAllEmployees, deleteEmployeeById, getEmployeeById } from "../model/EmployeeCRUD";
 import { useRef } from "react";
+
+
 export function Employees(){
     const searchNode=useRef();
     let [neoemployees, setarray]=useState([])
     let [notFoundError, setError]=useState("");
     async function getEmps(){
            const data=await getAllEmployees(); 
-           console.log(data);
+          // console.log(data);
+           const base64Image=Employee.getImage(data.employee_pic);
+           data.employee_pic=base64Image;
+         //  console.log(data);  
            setarray(data);
     }
     async function deleteEmployee(_id){
@@ -41,7 +46,7 @@ export function Employees(){
     }
     useEffect(()=>{
        // after rending if u want to connect to external system
-       getEmps();
+         getEmps();
     }, []);
     let cards=neoemployees.map(employee=><EmployeeCard key={employee._id} employee={employee} deleteEmployee={deleteEmployee}></EmployeeCard>)
     return(

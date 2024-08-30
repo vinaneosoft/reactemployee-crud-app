@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { addEmployee, getEmployeeById, updateEmployee } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
+    const emp= useLoaderData();
     let {empId}=useParams(); // object destructuring
     const navigate =useNavigate();
-    let [employee, setEmployee]=useState(new Employee())
+    let [employee, setEmployee]=useState(()=>getInitialData())
+
+    function getInitialData(){
+       if(empId!=undefined){
+        console.log("before:",emp.joining_date); 
+        emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)  ;
+        console.log("after:", emp.joining_date);
+        return emp
+       }
+       else return new Employee();
+    }
 
     let [gender, setGender]=useState({
         male:"male",
@@ -43,25 +54,24 @@ export function EmployeeForm(){
             window.alert(`Employee with id ${data._id} added successfully.....`);
             navigate("/employees")
         }
-
         else
             window.alert("something went wrong");
         //console.log(res);
     }
-    async function getEmp(){
+/*     async function getEmp(){
         if(empId!=undefined){
             let emp=await getEmployeeById(empId);
             emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)  ;
             setEmployee(emp);
         }
-    }
+    } */
 
     function getGender(ev){
         if(ev.target.checked)
             console.log(ev.target.value)
     }
 useEffect(()=>{
-    getEmp();
+   // getEmp();
 }, [])
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)

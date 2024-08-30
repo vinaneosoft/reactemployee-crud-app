@@ -11,6 +11,7 @@ import { EmployeeForm } from './components/EmployeeForm';
 import { Home } from './components/Home';
 import { AdminLogin } from './components/AdminLogin';
 import { FileUpload } from './components/FileUpload';
+import { getAllEmployees, getEmployeeById } from './model/EmployeeCRUD';
 
 export let MyContext= React.createContext();
 
@@ -28,7 +29,7 @@ let childRoutes=[
     element:<FileUpload />
   },
   {
-     path:'employees',
+    path:'employees',
     element:<Employees />
   },
   {
@@ -37,7 +38,11 @@ let childRoutes=[
   },
   {
     path:'editemployee/:empId',   // custom variable name
-    element:<EmployeeForm></EmployeeForm>
+    element:<EmployeeForm></EmployeeForm>,
+    loader:async ({params})=>{
+      return await getEmployeeById(params.empId)
+    },
+    shouldRevalidate: () => false
   },
   {
     path:'login',
@@ -56,9 +61,9 @@ const router= createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+ 
     <RouterProvider router={router}></RouterProvider>
-  </React.StrictMode>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import empImage from '../resources/sampleemployee.jpg';
+import empImage from '../resources/samplepic.jpg';
 
 
 /*1.  in src directly add absolute path of image
@@ -9,10 +9,11 @@ import empImage from '../resources/sampleemployee.jpg';
  3. import image and use image variable in src
  import empImage from '../resources/sampleemployee.jpg';
  */
+
 export function EmployeeCard({employee, deleteEmployee, editProfilePic}){
     return(
         <div className="card" style={{width: '18rem'}}>
-            <img height="150" src={empImage} className="card-img-top" alt="..." />
+            <img height="150" src={(employee.employee_pic!=undefined)?(`data:image/png;base64,${employee.employee_pic}`):(empImage)}  className="card-img-top" alt={employee.emp_name} />
             <Link to={`/fileupload/${employee._id}`}>edit picture</Link>
             <div className="card-body">
                 <h6>#{employee._id}</h6>

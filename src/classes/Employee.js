@@ -9,7 +9,7 @@ export class Employee{
         emp_email="",
         joining_date=this.getDateTimeLocal(),
         secrete_code="123",
-        employee_pic=""
+        employee_pic
     ){
         this._id=_id;
         this.emp_name=emp_name;
@@ -24,5 +24,9 @@ export class Employee{
     getDateTimeLocal(){
         let d=new Date();
         return  (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+    }
+    static getImage(arrayBuffer){
+        const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+        return base64String;
     }
 }
