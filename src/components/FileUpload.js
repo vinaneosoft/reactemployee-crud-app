@@ -3,8 +3,12 @@ import { uploadEmployeePic } from "../model/EmployeeCRUD";
 
 export function FileUpload(){
     const {_id}=useParams();
-    function fileUp(event){
-        uploadEmployeePic(_id, event.target.files[0]);
+    async function fileUp(event){
+       const data=await uploadEmployeePic(_id, event.target.files[0]);
+       if(data.modifiedCount>0)
+        window.alert("Profile pic updated successfully...");
+       else
+        window.alert("Someting went wrong");
     }
     return (
         <section className="m-3 p-3 border border-3">
