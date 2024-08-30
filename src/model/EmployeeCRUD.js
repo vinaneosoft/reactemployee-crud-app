@@ -36,4 +36,12 @@ export async function getAllEmployees(){
      return res.data;
  }
 
+ export async function uploadEmployeePic(_id,employee_pic){
+    let formData=new FormData();
+    formData.append('_id', _id)
+    formData.append('employee_pic', employee_pic)
+    const res=axios.post(`${url2}/upload`,formData)
+    return res.data;
+ }
+
 
