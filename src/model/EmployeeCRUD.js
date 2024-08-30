@@ -38,9 +38,8 @@ export async function getAllEmployees(){
 
  export async function uploadEmployeePic(_id,employee_pic){
     let formData=new FormData();
-    formData.append('_id', _id)
     formData.append('employee_pic', employee_pic)
-    const res=axios.post(`${url2}/upload`,formData)
+    const res=await axios.put(`${url2}/upload/${_id}`,formData)
     return res.data;
  }
 
