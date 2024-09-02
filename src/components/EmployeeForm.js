@@ -12,9 +12,8 @@ export function EmployeeForm(){
     function setInitialData(){
         console.log("in fun");
         if(emp!=null){
-            console.log(emp);
-            
-         emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)
+         emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-1)
+        // console.log("employee", emp);
          return emp;
         }
         else
