@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addEmployee, getEmployeeById, updateEmployee } from "../model/EmployeeCRUD";
 
 
 export function EmployeeForm(){
+    let { pathname }=useLocation();
     const emp= useLoaderData();
-    let {empId}=useParams(); // object destructuring
     const navigate =useNavigate();
     let [employee, setEmployee]=useState(()=>setInitialData())
     function setInitialData(){
         console.log("in fun");
         if(emp!=null){
+            console.log(emp);
+            
          emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)
          return emp;
         }
@@ -29,7 +31,7 @@ export function EmployeeForm(){
     function collectData(ev){
         ev.preventDefault();
        // console.log(employee);
-        if(empId!=undefined)
+        if(pathname.includes('editemployee'))
             updateEmp();
         else 
             addEmp();
@@ -63,6 +65,7 @@ export function EmployeeForm(){
     }
 useEffect(()=>{
   console.log("EmployeeForm rendered....");
+  console.log(pathname);
   
 })
 let departmentCodes=['JS','LD','PHP','HR','DN'];
@@ -73,8 +76,8 @@ return(
     <h3>EMPLOYEE FORM</h3>
 <form onSubmit={collectData}>
     <div className="mb-3">
-        <label htmlFor="empId" className="form-label">ID</label>
-        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} readOnly={empId!=undefined} />
+        <label htmlFor="_id" className="form-label">ID</label>
+        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} readOnly={pathname.includes('editemployee')} />
     </div>
     <div className="mb-3">
         <label htmlFor="empName" className="form-label">NAME</label>

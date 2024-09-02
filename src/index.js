@@ -48,7 +48,6 @@ let childRoutes=[
     element:<AdminLogin></AdminLogin>
   }
 ]
-
 const router= createBrowserRouter([
   {
     path:'/',
@@ -56,7 +55,6 @@ const router= createBrowserRouter([
     children:childRoutes
   }
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
