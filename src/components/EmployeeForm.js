@@ -8,18 +8,16 @@ export function EmployeeForm(){
     const emp= useLoaderData();
     let {empId}=useParams(); // object destructuring
     const navigate =useNavigate();
-    let [employee, setEmployee]=useState(()=>getInitialData())
-
-    function getInitialData(){
-       if(empId!=undefined){
-        console.log("before:",emp.joining_date); 
-        emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)  ;
-        console.log("after:", emp.joining_date);
-        return emp
-       }
-       else return new Employee();
+    let [employee, setEmployee]=useState(()=>setInitialData())
+    function setInitialData(){
+        console.log("in fun");
+        if(emp!=null){
+         emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)
+         return emp;
+        }
+        else
+            return new Employee();
     }
-
     let [gender, setGender]=useState({
         male:"male",
         female:"female"
@@ -58,21 +56,15 @@ export function EmployeeForm(){
             window.alert("something went wrong");
         //console.log(res);
     }
-/*     async function getEmp(){
-        if(empId!=undefined){
-            let emp=await getEmployeeById(empId);
-            emp.joining_date=emp.joining_date.slice(0, emp.joining_date.length-2)  ;
-            setEmployee(emp);
-        }
-    } */
 
     function getGender(ev){
         if(ev.target.checked)
             console.log(ev.target.value)
     }
 useEffect(()=>{
-   // getEmp();
-}, [])
+  console.log("EmployeeForm rendered....");
+  
+})
 let departmentCodes=['JS','LD','PHP','HR','DN'];
 let options = departmentCodes.map((dcode, i)=><option key={"o"+i}>{dcode}</option>)
 return(

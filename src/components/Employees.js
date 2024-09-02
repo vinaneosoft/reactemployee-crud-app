@@ -11,10 +11,6 @@ export function Employees(){
     let [notFoundError, setError]=useState("");
     async function getEmps(){
            const data=await getAllEmployees(); 
-         //  console.log(data);
-         //  const base64Image=Employee.getImage(data.employee_pic);
-         //  data.employee_pic=base64Image;
-          // console.log(data);  
            setarray(data);
     }
     async function deleteEmployee(_id){
