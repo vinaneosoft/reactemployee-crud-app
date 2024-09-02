@@ -76,7 +76,7 @@ return(
 <form onSubmit={collectData}>
     <div className="mb-3">
         <label htmlFor="_id" className="form-label">ID</label>
-        <input type="number" className="form-control" id="_id"  value={employee._id} onChange={getData} readOnly={pathname.includes('editemployee')} />
+        <input type="number"  className="form-control" id="_id"  value={employee._id} onChange={getData} readOnly={pathname.includes('editemployee')} />
     </div>
     <div className="mb-3">
         <label htmlFor="empName" className="form-label">NAME</label>
