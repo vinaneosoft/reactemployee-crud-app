@@ -19,9 +19,9 @@ let [baseLocAddress, setAddress] =useState("Ruby Tower, Dadar");
       <h1 className="mainHeading">EMPLOYEE MANAGEMENT</h1>
       <p>{baseLocAddress}</p>
       <Header></Header>  
-      <div>
+      
         <Outlet></Outlet> {/* Outlet of Router, which route gets matched, that child will be out */}
-      </div>
+      
       <Footer></Footer>
     </React.Fragment>
      </MyContext.Provider>
