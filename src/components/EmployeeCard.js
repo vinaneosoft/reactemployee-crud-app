@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom';
 import empImage from '../resources/samplepic.jpg';
 import  Delete  from '@mui/icons-material/Delete';
 import  Edit  from '@mui/icons-material/Edit';
-import './EmployeeCard.css'
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 /*1.  in src directly add absolute path of image
  2. in src use jsx expression and call require function by passing relative path of image
  src={require("../resources/sampleemployee.jpg")}
