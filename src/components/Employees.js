@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { getAllEmployees, deleteEmployeeById, getEmployeeById } from "../model/EmployeeCRUD";
 import { useRef } from "react";
 
+import  Input  from "@mui/material/Input";
+import  InputAdornment  from "@mui/material/InputAdornment";
+import  Search  from "@mui/icons-material/Search";
 
 export function Employees(){
     const searchNode=useRef();
@@ -26,7 +29,9 @@ export function Employees(){
         }
     }
     async function getEmp(_id){
-        if(_id!=""){
+        console.log(_id);
+        
+        if(_id!="" || _id!=undefined){
             const employee=await getEmployeeById(_id) 
             if(employee!=""){
                 setError("");
@@ -48,8 +53,15 @@ export function Employees(){
     return(
             <>
             <div>
-                <label htmlFor="_id">Enter Id to Search Employee : </label>
-                <input ref={searchNode} id="_id" type="search" onKeyUp={()=>getEmp(searchNode.current.value)} placeholder="Search" aria-label="Search" />
+                <label htmlFor="_id">Employee Id : </label>
+                <Input endAdornment={
+                    <InputAdornment position="end">
+                        <Search></Search>
+                    </InputAdornment>
+                    }  
+                    
+                variant="filled" inputRef={searchNode} id="_id" type="search" 
+                onKeyUp={()=>getEmp(searchNode.current.value)} placeholder="Search" />
                 <small className="text-danger">{notFoundError}</small>
             </div>
             <section className="d-flex flex-wrap">
