@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Employee } from "../classes/Employee";
 import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addEmployee, getEmployeeById, updateEmployee } from "../model/EmployeeCRUD";
-
-
+//import { Button } from "@mui/material"; // 1st way
+import  Button from "@mui/material/Button" // 2nd way
 export function EmployeeForm(){
     let { pathname }=useLocation();
     const emp= useLoaderData();
@@ -113,8 +113,8 @@ return(
         <input  type="radio" id="male" name="gender" value={gender.male} onChange={getGender} /> <label htmlFor="male">:MALE</label>
         <input  type="radio" id="female" name="gender" value={gender.female} onChange={getGender} />   <label htmlFor="female">:FEMALE</label>
     </div>
-<button type="submit" className="btn btn-primary m-2">SUBMIT</button>
-<button type="reset" onClick={()=>setEmployee(new Employee())} className="btn btn-primary">RESET</button>
+    <Button  variant="contained" color="secondary" type="submit">SUBMIT</Button>
+    <Button  className="m-3" variant="contained" color="secondary" type="reset" onClick={()=>setEmployee(new Employee())}>RESET</Button>
 </form>
 </div>
 </article>

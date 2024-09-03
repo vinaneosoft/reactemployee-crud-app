@@ -12,6 +12,10 @@ import { Home } from './components/Home';
 import { AdminLogin } from './components/AdminLogin';
 import { FileUpload } from './components/FileUpload';
 import { getEmployeeById } from './model/EmployeeCRUD';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 export let MyContext= React.createContext();
 
