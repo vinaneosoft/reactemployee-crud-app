@@ -119,14 +119,4 @@ return(
 </div>
 </article>
 );
-
 }
-
-/** _id=0, 
-        emp_name="", 
-        dept_code="LD", 
-        emp_salary=0, 
-        experience=0, 
-        emp_email="",
-        joining_date=this.getDateTimeLocal(),
-        secrete_code="123" */
