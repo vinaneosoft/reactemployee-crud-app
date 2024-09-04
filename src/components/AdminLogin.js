@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { setUser } from "../features/admin/loginSlice";
+import { useDispatch } from "react-redux";
 export function AdminLogin(){
     let [message, setMessage]=useState("");
+    let dispatch=useDispatch();
     const unameNode=useRef();
     const passNode=useRef();
 
@@ -19,6 +22,7 @@ export function AdminLogin(){
             cookies.set('neoadmin', username, {
                 expires:new Date('5-Sep-2024')
             });
+            dispatch(setUser(username)); // as we are dispatching the action, reducer is making state change in store
             navigate('/home')
         }
         else

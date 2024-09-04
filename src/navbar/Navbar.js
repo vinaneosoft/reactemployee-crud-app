@@ -3,21 +3,23 @@ import { SearchBar } from "../components/SearchBar";
 import { MyContext } from "..";
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
-
+import { useSelector, useDispatch} from "react-redux";
+import { setUser } from "../features/admin/loginSlice";
 export function Navbar(props){
-
+  const username= useSelector((storestate)=>storestate.user.value);
+  const dispatch=useDispatch();
   let companyName="Neosoft";
   let contextData=useContext(MyContext)
   const cookies = new Cookies();
-  let [admin, setAdmin]=useState(cookies.get('neoadmin')); // react store useSelector
+ // let [admin, setAdmin]=useState(cookies.get('neoadmin')); // react store useSelector
  
   function logOut(){
     cookies.remove("neoadmin");
+    dispatch(setUser(""));
   }
   useEffect(()=>{
-    console.log(admin); 
     props.getData(companyName);
-  },[admin])
+  },[])
   return (
   <nav className="navbar navbar-expand-md bg-body-tertiary">
     <div className="container-fluid">
@@ -39,7 +41,7 @@ export function Navbar(props){
         </ul>
         <SearchBar></SearchBar>
         <ul className="navbar-nav mb-2 mb-lg-0">
-          {admin==="" || admin===undefined ? <li className="nav-item">
+          {username==="" || username===undefined ? <li className="nav-item">
             <Link className="nav-link text-info" to="login" >Admin Login</Link>
           </li> :  <li className="nav-item">
             <button className="nav-link text-info btn btn-link" onClick={logOut}>Logout</button>
