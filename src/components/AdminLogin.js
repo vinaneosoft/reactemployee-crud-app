@@ -1,16 +1,23 @@
+
+
+
+ // Convert hours to milliseconds Cookies.set(cookieName, cookieValue, { expires: expiryDate });
+
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import { setUser } from "../features/admin/loginSlice";
 import { useDispatch } from "react-redux";
+
+const expiryDate = new Date(); 
+expiryDate.setTime(expiryDate.getTime() + (2 * 60 * 60 * 1000));
+
 export function AdminLogin(){
     let [message, setMessage]=useState("");
     let dispatch=useDispatch();
     const unameNode=useRef();
     const passNode=useRef();
-
     const navigate= useNavigate();
-
     function collectData(event){
         event.preventDefault();
         login(unameNode.current.value, passNode.current.value);
@@ -20,7 +27,7 @@ export function AdminLogin(){
         if(username=="admin" && password == 'neo123'){
             const cookies = new Cookies();
             cookies.set('neoadmin', username, {
-                expires:new Date('5-Sep-2024')
+                expires:expiryDate
             });
             dispatch(setUser(username)); // as we are dispatching the action, reducer is making state change in store
             navigate('/home')

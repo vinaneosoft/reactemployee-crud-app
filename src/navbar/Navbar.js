@@ -11,13 +11,14 @@ export function Navbar(props){
   let companyName="Neosoft";
   let contextData=useContext(MyContext)
   const cookies = new Cookies();
- // let [admin, setAdmin]=useState(cookies.get('neoadmin')); // react store useSelector
- 
   function logOut(){
     cookies.remove("neoadmin");
     dispatch(setUser(""));
   }
   useEffect(()=>{
+    const uname=cookies.get('neoadmin');
+    dispatch(setUser(uname));
+
     props.getData(companyName);
   },[])
   return (
@@ -46,10 +47,12 @@ export function Navbar(props){
           </li> :  <li className="nav-item">
             <button className="nav-link text-info btn btn-link" onClick={logOut}>Logout</button>
           </li> }
-         
         </ul>
         <div>
             <small>{contextData}</small>
+        </div>
+        <div className="border border-2">
+          <small>&nbsp;{username}</small>
         </div>
       </div>
     </div>

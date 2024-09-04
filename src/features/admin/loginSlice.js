@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-
 export const loginSlice = createSlice({
   name: 'login',
   initialState: {
@@ -11,10 +10,7 @@ export const loginSlice = createSlice({
     }
   }
 })
-
-// Action creators are generated for each case reducer function
 export const { setUser } = loginSlice.actions
-
 const loginReducer= loginSlice.reducer
 export default loginReducer
 
