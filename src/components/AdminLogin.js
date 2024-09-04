@@ -16,7 +16,9 @@ export function AdminLogin(){
         setMessage("");
         if(username=="admin" && password == 'neo123'){
             const cookies = new Cookies();
-            cookies.set('neoadmin', username);
+            cookies.set('neoadmin', username, {
+                expires:new Date('5-Sep-2024')
+            });
             navigate('/home')
         }
         else
